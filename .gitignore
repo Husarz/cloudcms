@@ -4,5 +4,6 @@ war/WEB-INF/classes/
 war/WEB-INF/deploy/
 gwt-unitCache/
 .settings/
+test-classes/
 bin
 .metadata 
