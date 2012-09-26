@@ -1,5 +1,6 @@
 package my.test.apps.admin;
 
+import java.util.Date;
 import java.util.List;
 
 import my.test.apps.shared.model.*;
@@ -15,14 +16,13 @@ public interface Main {
 	
 	IsWidget getMainWidget();
 	EventBus getEventBus();
-	
-	
-	
+
 	<T> void setTabView(T view);
 	UserEntry getUserEntry();
 	AlbumEntry getAlbumEntry();
 	PicasaEntry getPicasaEntry();
 	PhotoEntry getPhotoEntry();
+	TextFeed getTextFeed();
 	
 	PhotoGallery getPhotoGallery();
 	
@@ -55,6 +55,16 @@ public interface Main {
 		void delPhotos(Iterable<Photo> photos);
 	}
 		
+	public interface TextEntry {
+		void showTexts(String email);
+		void getText(Date date);
+//		void addText();
+	}
+	
+	public interface TextFeed{
+		
+	}
+	
 	public interface PhotoGallery{
 //		IsWidget getPanelWidget();
 		void addPhotos(List<String> urls);

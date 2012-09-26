@@ -26,6 +26,7 @@
 				<g:Button ui:field="albumsTab" >Albums</g:Button>
 				<g:Button ui:field="picasaTab" >Picasa</g:Button>
 				<g:Button ui:field="photoTab" >Photo</g:Button>
+				<g:Button ui:field="textTab" >Text MAnager</g:Button>
 			</g:VerticalPanel>
 		</g:west>
 		<g:center> 

@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:my.test.apps.admin.ui.text.toolbar" >
+	<ui:style>
+
+	</ui:style>
+	<g:HTMLPanel ui:field='panel'>
+<!-- 	<table> -->
+<!-- 		<tr><td><my:RichTextToolbar ui:field="bar" /></td></tr> -->
+<!-- 		<tr><td><g:RichTextArea ui:field='area' width="90%" height="25em"></g:RichTextArea></td></tr> -->
+<!-- 	</table> -->
+		
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

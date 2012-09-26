@@ -27,4 +27,7 @@ public interface AdminServices extends RemoteService{
 	void addPhotos(List<Photo> photos);
 	void delPhotos(List<Photo> photos);
 	
+	List<MyText> getText(String email);
+	void deleteText(MyText text);
+	
 }

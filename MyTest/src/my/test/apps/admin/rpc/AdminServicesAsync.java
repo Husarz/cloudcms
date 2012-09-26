@@ -24,5 +24,8 @@ public interface AdminServicesAsync {
 	void addPhotos(Album album, AsyncCallback<Void> callback);
 	void delPhotos(List<Photo> photos, AsyncCallback<Void> callback);
 	void addPhotos(List<Photo> photos, AsyncCallback<Void> callback);
+	
+	void getText(String email, AsyncCallback<List<MyText>> callback);
+	void deleteText(MyText text, AsyncCallback<Void> callback);
 
 }

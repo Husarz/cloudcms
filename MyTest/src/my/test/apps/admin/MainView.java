@@ -3,6 +3,7 @@ package my.test.apps.admin;
 import my.test.apps.admin.bundle.Resources;
 import my.test.apps.admin.ui.*;
 import my.test.apps.admin.ui.gllery.*;
+import my.test.apps.admin.ui.text.TextManager;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -37,8 +38,9 @@ class MainView extends Composite implements Main{
 	UserPanel user;
 	PhotoPanel photo;
 	MiniGallery gallery;
+	TextManager text;
 	@UiField HTMLPanel mainPanel;
-	@UiField Button usersTab, albumsTab, picasaTab, photoTab;
+	@UiField Button usersTab, albumsTab, picasaTab, photoTab, textTab;
 	
 	public MainView() {
 		EVENTBUS = new SimpleEventBus();
@@ -71,6 +73,10 @@ class MainView extends Composite implements Main{
 	void flicerClick(ClickEvent e) {
 		getPhotoEntry();
 		visible(photo);
+	}
+	@UiHandler("textTab")
+	void textClick(ClickEvent e) {
+		getTextFeed();
 	}
 	
 	@Override
@@ -142,5 +148,14 @@ class MainView extends Composite implements Main{
 			// not add to panel see the constructors...
 //		}
 		return gallery;
+	}
+
+	@Override
+	public TextFeed getTextFeed() {
+		//TODO
+//		if (text == null)
+		text = new TextManager();
+		mainPanel.add(text);
+		return text;
 	}
 }

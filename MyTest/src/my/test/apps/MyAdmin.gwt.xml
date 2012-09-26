@@ -3,7 +3,7 @@
 <module rename-to='admin'>
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.googlecode.objectify.Objectify" />
-	
+	<inherits name="com.google.gwt.i18n.I18N"/>
 	<entry-point class="my.test.apps.admin.MyAdmin" />
 	
 	<!-- Use ClientFactoryImpl by default -->

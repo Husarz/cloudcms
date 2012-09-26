@@ -5,6 +5,7 @@ import java.util.List;
 import my.test.apps.admin.rpc.AdminServices;
 import my.test.apps.server.dao.*;
 import my.test.apps.shared.model.Album;
+import my.test.apps.shared.model.MyText;
 import my.test.apps.shared.model.MyUser;
 import my.test.apps.shared.model.Photo;
 
@@ -107,6 +108,18 @@ public class AdminServiceImpl extends RemoteServiceServlet implements AdminServi
 	@Override
 	public void addPhotos(Album album) {
 		photoDao.addPhotos(album);
+	}
+
+	@Override
+	public List<MyText> getText(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteText(MyText text) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
