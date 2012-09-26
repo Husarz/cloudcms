@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:my.test.apps.admin.ui">
+	<ui:with field="res" type="my.test.apps.admin.bundle.Resources" />
+	<ui:style type='my.test.apps.admin.MainView.MyStyle'>
+		.mainPanel {
+     		margin-left: auto;
+     		margin-right: auto;	
+     	}
+     	.westPanel {
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+		.panel{
+			border: 3px solid rgba(0,0,0,0.5);
+
+		}
+	</ui:style>
+	
+	<g:DockLayoutPanel unit='PX' height="100%" width="100%"  addStyleNames='{style.mainPanel}' >
+		<g:west size="75.0">
+			<g:VerticalPanel width="100%" height="95px" addStyleNames='{style.westPanel}' >
+				<g:HTMLPanel > <br /> </g:HTMLPanel>
+				<g:Button ui:field="usersTab" >Users</g:Button>
+				<g:Button ui:field="albumsTab" >Albums</g:Button>
+				<g:Button ui:field="picasaTab" >Picasa</g:Button>
+				<g:Button ui:field="photoTab" >Photo</g:Button>
+			</g:VerticalPanel>
+		</g:west>
+		<g:center> 
+			<g:HTMLPanel ui:field="mainPanel">
+<!-- 				<my:AdminPanel ui:field="admin" addStyleNames='{style.panel}' /> -->
+<!-- 				 =================== =================== <br /> =================== =================== -->
+<!-- 				<my:AlbumsPanel  ui:field="album" addStyleNames='{style.panel}' /> -->
+<!-- 				 =================== =================== <br /> =================== =================== -->
+<!-- 				<my:PicasaPanel  ui:field="picasa" addStyleNames='{style.panel}' /> -->
+			</g:HTMLPanel>
+		</g:center>
+	</g:DockLayoutPanel>
+	
+</ui:UiBinder> 

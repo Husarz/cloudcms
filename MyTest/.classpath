@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" output="test-classes" path="test"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/adi/Documents/repo/objectify-3.1/objectify-3.1.jar"/>
+	<classpathentry kind="lib" path="/home/adi/Documents/repo/javamail-1.4.5/mail.jar"/>
+	<classpathentry kind="lib" path="/home/adi/Documents/repo/gdata/java/lib/gdata-photos-2.0.jar"/>
+	<classpathentry kind="lib" path="/home/adi/Documents/repo/guava-13.0.jar"/>
+	<classpathentry kind="lib" path="/home/adi/Documents/repo/com.google.gdata.feature_1.0.0.jar"/>
+	<classpathentry kind="lib" path="/home/adi/Documents/eclipse/eclipse2/plugins/com.google.gdata_1.0.0/gdataplugin.jar"/>
+	<classpathentry kind="lib" path="/home/adi/Documents/repo/jaf-1.1.1/activation.jar"/>
+	<classpathentry kind="lib" path="/home/adi/Documents/repo/gdata/java/lib/gdata-analytics-2.1.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

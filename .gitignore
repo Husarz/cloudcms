@@ -1,0 +1,8 @@
+war/admin/
+war/mytest/
+war/WEB-INF/classes/
+war/WEB-INF/deploy/
+gwt-unitCache/
+.settings/
+bin
+.metadata 

@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+.tab {
+box-shadow: 	8px 8px 8px rgba(0,0,0,0.5);
+}
+.panel{
+			border: 3px solid rgba(0,0,0,0.5);
+}

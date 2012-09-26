@@ -1,0 +1,48 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:c="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:my="urn:import:my.test.apps.admin.ui.gllery">
+	<ui:with field="res" type="my.test.apps.admin.bundle.Resources" />
+	<ui:style>
+		.cellTable {
+			border-bottom: 1px solid #ccc;
+			text-align: left;
+			margin-bottom: 4px;
+			cursor: pointer
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames='{res.getadmin.panel}'>
+		<table width="100%">
+<!-- 			<tr> -->
+<!-- 				<td> -->
+<!-- 					<g:ListBox ui:field="listuser" /> -->
+<!-- 				</td> -->
+<!-- 				<td> -->
+<!-- 					<g:ListBox ui:field="listalbum" /> -->
+<!-- 				</td> -->
+<!-- 			</tr> -->
+			<tr>
+				<td>
+					<g:Button ui:field="show">Show gallery</g:Button>
+				</td>
+			</tr>
+			<tr>
+				<td valign='top' width="30%">
+					<c:CellTable addStyleNames='{style.cellTable}'
+						pageSize='15' ui:field='cellphoto' />
+				</td>
+				<td  width="70%">
+					<my:SimplePhoto ui:field="photoPanel" />
+				</td>
+			</tr>
+			<tr>
+				<td align='center'>
+					<c:SimplePager addStyleNames='{style.cellTable}'
+						ui:field='pager' />
+				</td>
+				<td></td>
+			</tr>
+		</table>
+	</g:HTMLPanel>
+</ui:UiBinder> 
