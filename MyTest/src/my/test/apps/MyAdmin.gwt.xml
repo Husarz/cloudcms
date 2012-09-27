@@ -5,7 +5,7 @@
 	<inherits name="com.googlecode.objectify.Objectify" />
 	<inherits name="com.google.gwt.i18n.I18N"/>
 	<entry-point class="my.test.apps.admin.MyAdmin" />
-	
+	<inherits name='com.google.gwt.user.theme.clean.Clean'/>
 	<!-- Use ClientFactoryImpl by default -->
 	<replace-with class="my.test.apps.admin.MainView">
 		<when-type-is class="my.test.apps.admin.Main" />
