@@ -118,24 +118,7 @@ public class PicasaPanel extends Composite implements Main.PicasaEntry{
 		cellTable.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.ENABLED);
 		
 		cellTable.setSelectionModel(select);
-		
-//		Column<Album, String> editTextColumn1 = new Column<Album, String>(new TextInputCell()) {
-//
-//			@Override
-//			public String getValue(Album object) {
-//				return object.getAlbumId();
-//			}
-//
-//		};
-//		cellTable.addColumn(editTextColumn1, "Id");
-//		TextColumn<PicasaAlbum>  col0 = new TextColumn<PicasaAlbum>() {
-//			
-//			@Override
-//			public String getValue(PicasaAlbum object) {
-//				return object.getAlbumId();
-//			}
-//		};
-//		cellTable.addColumn(col0, "Id");
+
 		
 		TextColumn<Album>  col1 = new TextColumn<Album>() {
 			
@@ -146,16 +129,6 @@ public class PicasaPanel extends Composite implements Main.PicasaEntry{
 		};
 		cellTable.addColumn(col1, "Title");
 		
-//		Column<UserAlbum, Hyperlink> col = new Column<UserAlbum, Hyperlink>(new HyperlinkCell()){
-//
-//			@Override
-//			public Hyperlink getValue(UserAlbum object) {
-//				// TODO Auto-generated method stub
-//				return new Hyperlink(SafeHtmlUtils.fromTrustedString( object.getUrl()),"link");
-//			}
-//			
-//		};
-//		cellTable.addColumn(col, "Url");
 		Column<Album, String> editTextColumn = new Column<Album, String>(new TextInputCell()) {
 
 			@Override
@@ -165,14 +138,6 @@ public class PicasaPanel extends Composite implements Main.PicasaEntry{
 
 		};
 		cellTable.addColumn(editTextColumn, "url");
-//		TextColumn<PicasaAlbum>  col2 = new TextColumn<PicasaAlbum>() {
-//			
-//			@Override
-//			public String getValue(PicasaAlbum object) {
-//				return object.getUrl();
-//			}
-//		};
-//		cellTable.addColumn(col2, "Url");
 	
 		TextColumn<Album>  col3 = new TextColumn<Album>() {
 			

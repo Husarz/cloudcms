@@ -32,6 +32,7 @@
 				<td>
 					<hr />
 					<g:Button ui:field="add" > przeslij text </g:Button>
+					<g:Button ui:field="show" > pokarz wynik </g:Button>
 				</td>
 			</tr>
 			<tr><td>

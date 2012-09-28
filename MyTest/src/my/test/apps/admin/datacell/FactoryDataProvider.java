@@ -18,6 +18,7 @@ public class FactoryDataProvider {
 	private static AlbumDataProvider albumData;
 	private static PicasaPhotoDataProvider picasaPhoto;
 	private static PhotoDataProvider photoData;
+	private static TextDataProvider textData;
 	
 	private FactoryDataProvider() {}
 
@@ -48,5 +49,10 @@ public class FactoryDataProvider {
 	public static PhotoDataProvider getPhotoDataProvider(HasData<Photo> display){
 		if (photoData == null) photoData = new PhotoDataProvider(adminService, display);
 		return photoData;
+	}
+	
+	public static TextDataProvider getTextDataProvider(HasData<MyText> display){
+		if (textData == null) textData = new TextDataProvider(display, adminService);
+		return textData;
 	}
 }

@@ -20,7 +20,7 @@
 			box-shadow:     #1C1C1C 12px 12px 8px;
 		}
 		.panel img{
-			
+			padding: 5px;
 
 		}
 	</ui:style>

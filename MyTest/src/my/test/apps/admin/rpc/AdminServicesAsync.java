@@ -27,5 +27,7 @@ public interface AdminServicesAsync {
 	
 	void getText(String email, AsyncCallback<List<MyText>> callback);
 	void deleteText(MyText text, AsyncCallback<Void> callback);
+	void addText(MyText text, AsyncCallback<Void> callback);
+	void getText(AsyncCallback<List<MyText>> callback);
 
 }

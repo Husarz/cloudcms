@@ -7,6 +7,7 @@ import my.test.apps.shared.model.*;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.web.bindery.event.shared.EventBus;
 
@@ -16,12 +17,14 @@ public interface Main {
 	
 	IsWidget getMainWidget();
 	EventBus getEventBus();
+	Dictionary getInfo();
 
 	<T> void setTabView(T view);
 	UserEntry getUserEntry();
 	AlbumEntry getAlbumEntry();
 	PicasaEntry getPicasaEntry();
 	PhotoEntry getPhotoEntry();
+	TextEntry getTextEntry();
 	TextFeed getTextFeed();
 	
 	PhotoGallery getPhotoGallery();
@@ -57,8 +60,9 @@ public interface Main {
 		
 	public interface TextEntry {
 		void showTexts(String email);
+		void showTexts();
 		void getText(Date date);
-//		void addText();
+		void addText(String text);
 	}
 	
 	public interface TextFeed{

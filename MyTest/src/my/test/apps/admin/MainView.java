@@ -8,6 +8,7 @@ import my.test.apps.admin.ui.text.TextManager;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -33,18 +34,21 @@ class MainView extends Composite implements Main{
 	}
 
 	final EventBus EVENTBUS;
+	Dictionary info;
 	PicasaPanel picasa;
 	AlbumsPanel album;
 	UserPanel user;
 	PhotoPanel photo;
 	MiniGallery gallery;
+	TextPanel textPanel;
 	TextManager text;
 	@UiField HTMLPanel mainPanel;
-	@UiField Button usersTab, albumsTab, picasaTab, photoTab, textTab;
+	@UiField Button usersTab, albumsTab, picasaTab, photoTab, textPanelTab, textTab;
 	
 	public MainView() {
 		EVENTBUS = new SimpleEventBus();
 		Resources.INSTANCE.getadmin().ensureInjected();
+		info = Dictionary.getDictionary("info");
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
@@ -74,6 +78,13 @@ class MainView extends Composite implements Main{
 		getPhotoEntry();
 		visible(photo);
 	}
+	
+	@UiHandler("textPanelTab")
+	void textPanelTabClick(ClickEvent e) {
+		getTextEntry();
+		visible(textPanel);
+	}
+	
 	@UiHandler("textTab")
 	void textClick(ClickEvent e) {
 		getTextFeed();
@@ -82,6 +93,11 @@ class MainView extends Composite implements Main{
 	@Override
 	public IsWidget getMainWidget() {
 		return asWidget();
+	}
+	
+	@Override
+	public Dictionary getInfo() {
+		return info;
 	}
 
 	private void visible(HasVisibility panel){
@@ -158,4 +174,16 @@ class MainView extends Composite implements Main{
 		mainPanel.add(text);
 		return text;
 	}
+
+	@Override
+	public TextEntry getTextEntry() {
+		if (textPanel == null) {
+			textPanel = new TextPanel();
+			mainPanel.add(textPanel);
+			textPanel.setVisible(false);
+		}
+		return textPanel;
+	}
+
+
 }

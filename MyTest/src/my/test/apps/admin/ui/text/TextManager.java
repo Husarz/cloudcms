@@ -1,5 +1,6 @@
 package my.test.apps.admin.ui.text;
 
+import my.test.apps.admin.Main;
 import my.test.apps.admin.Main.TextFeed;
 import my.test.apps.admin.ui.text.toolbar.RichTextToolbar;
 
@@ -32,9 +33,11 @@ public class TextManager extends Composite implements TextFeed{
 	@UiField HTMLPanel panel;
 	@UiField(provided = true) RichTextArea area;
 	@UiField(provided = true) RichTextToolbar bar;
-	@UiField Button add;
+	@UiField Button add, show;
 	@UiField HTML label;
 
+	final Main mainCtl = Main.INST;
+	
 	public TextManager() {
 		area = new RichTextArea();
 		bar = new RichTextToolbar(area);
@@ -46,6 +49,11 @@ public class TextManager extends Composite implements TextFeed{
 	
 	@UiHandler("add")
 	void addClick(ClickEvent e){
+		mainCtl.getTextEntry().addText(area.getHTML());
+	}
+
+	@UiHandler("show")
+	void showClick(ClickEvent e){
 		label.setHTML(area.getHTML());
 	}
 

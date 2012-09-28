@@ -22,6 +22,7 @@ public class AdminServiceImpl extends RemoteServiceServlet implements AdminServi
 	private MyUserDao userDao = new MyUserDao();
 	private AlbumDao albumDao = new AlbumDao();
 	private PhotoDao photoDao = new PhotoDao();
+	private MyTextDao textDao = new MyTextDao();
 
 	@Override
 	public boolean isAdmin() {
@@ -118,10 +119,16 @@ public class AdminServiceImpl extends RemoteServiceServlet implements AdminServi
 
 	@Override
 	public void deleteText(MyText text) {
-		// TODO Auto-generated method stub
-		
+		textDao.delete(text);
 	}
 
+	@Override
+	public void addText(MyText text) {
+		textDao.addText(text);
+	}
 
-
+	@Override
+	public List<MyText> getText() {
+		return textDao.getText();
+	}
 }
