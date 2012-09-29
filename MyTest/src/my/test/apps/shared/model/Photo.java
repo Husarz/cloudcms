@@ -3,8 +3,10 @@ package my.test.apps.shared.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Entity
 public class Photo implements Serializable{
 
 	private static final long serialVersionUID = 1L;

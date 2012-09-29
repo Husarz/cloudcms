@@ -3,7 +3,10 @@ package my.test.apps.shared.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
+
+import com.googlecode.objectify.Key;
 
 /**
  * @author adi
@@ -11,26 +14,29 @@ import javax.persistence.Id;
  *	This class represents a menu in an application, 
  *  in the form of a tree
  */
+@Entity
 public class MapMenu implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id Long id;
-	List<Long> mapsId;
-	Long parent;
+	List<Key<MapMenu>> mapsId;
+	Key<MapMenu> parent;
 	String map;
-//	T obj;
+	String descrip;
+	Key<?> objKey;
 	
-	public List<Long> getMapsId() {
+
+	public List<Key<MapMenu>> getMapsId() {
 		return mapsId;
 	}
-	public void setMapsId(List<Long> mapsId) {
+	public void setMapsId(List<Key<MapMenu>> mapsId) {
 		this.mapsId = mapsId;
 	}
-	public Long getParent() {
+	public Key<MapMenu> getParent() {
 		return parent;
 	}
-	public void setParent(Long parent) {
+	public void setParent(Key<MapMenu> parent) {
 		this.parent = parent;
 	}
 	public String getMap() {
@@ -39,10 +45,16 @@ public class MapMenu implements Serializable{
 	public void setMap(String map) {
 		this.map = map;
 	}
-//	public T getObj() {
-//		return obj;
-//	}
-//	public void setObj(T obj) {
-//		this.obj = obj;
-//	}
+	public String getDescrip() {
+		return descrip;
+	}
+	public void setDescrip(String descrip) {
+		this.descrip = descrip;
+	}
+	public Key<?> getObjKey() {
+		return objKey;
+	}
+	public void setObjKey(Key<?> objKey) {
+		this.objKey = objKey;
+	}
 }

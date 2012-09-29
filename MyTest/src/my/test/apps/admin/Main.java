@@ -33,6 +33,14 @@ public interface Main {
 		void setVisiblePanel(boolean visible);
 	}
 	
+	public interface MenuEntry extends VisiblePanel{
+		void showMenu();
+		void addNode(MapMenu node);
+		void delNode(MapMenu node);
+		void updateNode(MapMenu node);
+		List<MapMenu> getMapMenu();
+	}
+	
 	public interface UserEntry extends VisiblePanel{
 		void addUser(String email);
 		void delUser(String email);

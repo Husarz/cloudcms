@@ -3,10 +3,12 @@ package my.test.apps.shared.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import com.googlecode.objectify.annotation.Unindexed;
 
+@Entity
 public class MyText implements Serializable{
 
 	private static final long serialVersionUID = 1L;
