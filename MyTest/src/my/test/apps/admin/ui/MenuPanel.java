@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.MultiSelectionModel;
+import com.google.gwt.view.client.TreeViewModel;
 
 public class MenuPanel extends Composite implements Main.MenuEntry {
 
@@ -33,7 +34,9 @@ public class MenuPanel extends Composite implements Main.MenuEntry {
 	MultiSelectionModel<MapMenu> select;
 	
 	public MenuPanel() {
-		
+		TreeViewModel viewModel = new CustomTreeModel();
+		CellBrowser.Builder<String> builder = new  CellBrowser.Builder<String>( viewModel ,"value"); 
+		cellBrowser = builder.build();
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		select = new MultiSelectionModel<MapMenu>();
