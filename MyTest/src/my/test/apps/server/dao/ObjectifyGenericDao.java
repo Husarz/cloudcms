@@ -57,8 +57,14 @@ public class ObjectifyGenericDao<T> extends DAOBase{
 //	public T get(Long id) throws EntityNotFoundException{
 //		return ofy().get(this.clazz, id);
 //	}
+	public T get(Long id) throws EntityNotFoundException{
+		return ofy().get(this.clazz, id);
+	}
 	public T get(Key<T> key) throws EntityNotFoundException{
 		return ofy().get(key);
+	}
+	public Map<Key<T>, T> getAll(Iterable<Key<T>> keys){
+		return ofy().get(keys);
 	}
 	
 	/**

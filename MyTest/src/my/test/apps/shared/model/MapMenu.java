@@ -1,7 +1,6 @@
 package my.test.apps.shared.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,23 +19,27 @@ public class MapMenu implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id Long id;
-	List<Key<MapMenu>> mapsId;
-	Key<MapMenu> parent;
+//	List<Long> mapsId;
+	Long parent;
 	String map;
 	String descrip;
 	Key<?> objKey;
 	
 
-	public List<Key<MapMenu>> getMapsId() {
-		return mapsId;
+	public Long getId() {
+		return id;
 	}
-	public void setMapsId(List<Key<MapMenu>> mapsId) {
-		this.mapsId = mapsId;
-	}
-	public Key<MapMenu> getParent() {
+//	public List<Long> getMapsId() {
+//		return mapsId;
+//	}
+//	public void setMapsId(List<Long> mapsId) {
+//		this.mapsId = mapsId;
+//	}
+	public Long getParent() {
 		return parent;
 	}
-	public void setParent(Key<MapMenu> parent) {
+
+	public void setParent(Long parent) {
 		this.parent = parent;
 	}
 	public String getMap() {

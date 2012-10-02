@@ -1,10 +1,12 @@
 package my.test.apps.admin.rpc;
 
 import java.util.List;
+import java.util.Map;
 
 import my.test.apps.shared.model.*;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.googlecode.objectify.Key;
 
 public interface AdminServicesAsync {
 
@@ -29,5 +31,7 @@ public interface AdminServicesAsync {
 	void deleteText(MyText text, AsyncCallback<Void> callback);
 	void addText(MyText text, AsyncCallback<Void> callback);
 	void getText(AsyncCallback<List<MyText>> callback);
+	
+	void getAllMapMenu(AsyncCallback<List<MapMenu>> callback);
 
 }

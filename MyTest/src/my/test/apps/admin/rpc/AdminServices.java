@@ -1,11 +1,14 @@
 package my.test.apps.admin.rpc;
 
 import java.util.List;
+import java.util.Map;
 
 import my.test.apps.shared.model.*;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+
+import com.googlecode.objectify.Key;
 
 @RemoteServiceRelativePath("manage")
 public interface AdminServices extends RemoteService{
@@ -31,5 +34,7 @@ public interface AdminServices extends RemoteService{
 	List<MyText> getText();
 	void addText(MyText text);
 	void deleteText(MyText text);
+	
+	List<MapMenu> getAllMapMenu();
 	
 }

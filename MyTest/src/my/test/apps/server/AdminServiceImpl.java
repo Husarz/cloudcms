@@ -1,10 +1,12 @@
 package my.test.apps.server;
 
 import java.util.List;
+import java.util.Map;
 
 import my.test.apps.admin.rpc.AdminServices;
 import my.test.apps.server.dao.*;
 import my.test.apps.shared.model.Album;
+import my.test.apps.shared.model.MapMenu;
 import my.test.apps.shared.model.MyText;
 import my.test.apps.shared.model.MyUser;
 import my.test.apps.shared.model.Photo;
@@ -13,6 +15,7 @@ import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.googlecode.objectify.Key;
 
 public class AdminServiceImpl extends RemoteServiceServlet implements AdminServices{
 
@@ -23,6 +26,7 @@ public class AdminServiceImpl extends RemoteServiceServlet implements AdminServi
 	private AlbumDao albumDao = new AlbumDao();
 	private PhotoDao photoDao = new PhotoDao();
 	private MyTextDao textDao = new MyTextDao();
+	private MapMenuDao map = new MapMenuDao();
 
 	@Override
 	public boolean isAdmin() {
@@ -130,5 +134,10 @@ public class AdminServiceImpl extends RemoteServiceServlet implements AdminServi
 	@Override
 	public List<MyText> getText() {
 		return textDao.getText();
+	}
+
+	@Override
+	public List<MapMenu> getAllMapMenu() {
+		return map.getAll();
 	}
 }

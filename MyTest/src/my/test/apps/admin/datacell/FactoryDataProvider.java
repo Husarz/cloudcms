@@ -19,6 +19,7 @@ public class FactoryDataProvider {
 	private static PicasaPhotoDataProvider picasaPhoto;
 	private static PhotoDataProvider photoData;
 	private static TextDataProvider textData;
+	private static MenuDataProvider menuData;
 	
 	private FactoryDataProvider() {}
 
@@ -54,5 +55,15 @@ public class FactoryDataProvider {
 	public static TextDataProvider getTextDataProvider(HasData<MyText> display){
 		if (textData == null) textData = new TextDataProvider(display, adminService);
 		return textData;
+	}
+	
+	public static MenuDataProvider getMenuDataProvider(HasData<MapMenu> display){
+		if (display == null){
+			if (menuData == null) menuData = new MenuDataProvider(adminService);
+			return menuData;
+		}
+			// dont use ...
+		if (menuData == null) menuData = new MenuDataProvider(adminService, display);
+		return menuData;
 	}
 }
