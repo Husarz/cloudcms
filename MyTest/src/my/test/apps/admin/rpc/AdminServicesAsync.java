@@ -10,6 +10,10 @@ import com.googlecode.objectify.Key;
 
 public interface AdminServicesAsync {
 
+	<T> void getEntity(Key<T> key, AsyncCallback<T> callback);
+	<T> void getMapEntities(Iterable<Key<T>> keys, AsyncCallback<Map<Key<T>, T>> callback);
+	<T> void queryEntities(Class<T> clazz, AsyncCallback<List<T>> callback);
+	
 	void isAdmin(AsyncCallback<Boolean> callback);
 	void getMyUser(String email, AsyncCallback<MyUser> callback);
 	void getUsersemail(AsyncCallback<List<String>> callback);
@@ -33,5 +37,7 @@ public interface AdminServicesAsync {
 	void getText(AsyncCallback<List<MyText>> callback);
 	
 	void getAllMapMenu(AsyncCallback<List<MapMenu>> callback);
+
+
 
 }

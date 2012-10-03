@@ -13,8 +13,14 @@ import java.util.Map;
 import javax.persistence.Embedded;
 import javax.persistence.Transient;
 
+import my.test.apps.shared.model.Album;
+import my.test.apps.shared.model.MapMenu;
+import my.test.apps.shared.model.MyText;
+import my.test.apps.shared.model.MyUser;
+
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
 import com.googlecode.objectify.util.DAOBase;
 
@@ -30,7 +36,7 @@ public class ObjectifyGenericDao<T> extends DAOBase{
 	static {}
 	protected Class<T> clazz;
 	
-	protected ObjectifyGenericDao(Class<T> clazz) {
+	public ObjectifyGenericDao(Class<T> clazz) {
 		this.clazz = clazz;
 	}
 	
@@ -75,6 +81,12 @@ public class ObjectifyGenericDao<T> extends DAOBase{
 	 * @param propValue		- wartosci pol encji
 	 * @return 				- zwraca wlasciwe encje
 	 */
+	
+	public List<T> getQuery(){
+		Query<T> q = ofy().query(clazz);
+		return asList(q.fetch());
+	}
+	
 	public T getByProperty(String propName, Object propValue){
 		Query<T> q = ofy().query(clazz);
 		q.filter(propName, propValue);

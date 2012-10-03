@@ -3,6 +3,8 @@ package my.test.apps.server.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
 
@@ -15,6 +17,7 @@ public class MapMenuDao extends ObjectifyGenericDao<MapMenu>{
 	}
 	
 	MapMenu root;
+	Key<MapMenu> key;
 	
 	public MapMenuDao() {
 		super(MapMenu.class);
@@ -23,9 +26,18 @@ public class MapMenuDao extends ObjectifyGenericDao<MapMenu>{
 			MapMenu entity = new MapMenu();
 			entity.setDescrip("root Menu");
 			entity.setMap("ROOT");
-			put(entity);
-			root = entity;
+			 //= entity.setObjKey(objKey);
+			key = put(entity);
+			try {
+				root = get(key);
+			} catch (EntityNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			root.setObjKey(key);
+			put(root);
 		}
+		
 	}
 	
 	/**

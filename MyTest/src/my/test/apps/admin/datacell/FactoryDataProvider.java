@@ -4,7 +4,9 @@ import my.test.apps.admin.rpc.*;
 import my.test.apps.shared.model.*;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.HasData;
+import com.googlecode.objectify.Key;
 
 public class FactoryDataProvider {
 	
@@ -25,6 +27,23 @@ public class FactoryDataProvider {
 
 	public static FactoryDataProvider getInstance() {
 		return Instance;
+	}
+	
+	public static AdminServicesAsync getAdminservice() {
+		return adminService;
+	}
+
+	public static PicasaServiceAsync getPicasaservice() {
+		return picasaService;
+	}
+
+	public static <T> EntityDataProvider<T> getEntityDataProvider(HasData<T> display){
+		EntityDataProvider<T> entityData = new EntityDataProvider<T>(display, adminService);
+		return entityData;
+	}
+	public static <T> EntitiesDataProvider<T> getEntitiesDataProvider(Class<T> clazz){
+		EntitiesDataProvider<T> entityData = new EntitiesDataProvider<T>(clazz, adminService);
+		return entityData;
 	}
 	
 	public static UserDataProvider getUserDataProvider(HasData<MyUser> display){

@@ -140,4 +140,23 @@ public class AdminServiceImpl extends RemoteServiceServlet implements AdminServi
 	public List<MapMenu> getAllMapMenu() {
 		return map.getAll();
 	}
+
+	@Override
+	public <T> T getEntity(Key<T> key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> Map<Key<T>, T> getMapEntities(Iterable<Key<T>> keys) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> List<T> queryEntities(Class<T> clazz) {
+		ObjectifyGenericDao<T> obj = new ObjectifyGenericDao<T>(clazz);
+		
+		return obj.getQuery();
+	}
 }

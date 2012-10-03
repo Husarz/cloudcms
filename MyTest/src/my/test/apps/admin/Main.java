@@ -20,12 +20,14 @@ public interface Main {
 	Dictionary getInfo();
 
 	<T> void setTabView(T view);
+	MenuEntry getMenuEntry();
 	UserEntry getUserEntry();
 	AlbumEntry getAlbumEntry();
 	PicasaEntry getPicasaEntry();
 	PhotoEntry getPhotoEntry();
 	TextEntry getTextEntry();
 	TextFeed getTextFeed();
+	
 	
 	PhotoGallery getPhotoGallery();
 	

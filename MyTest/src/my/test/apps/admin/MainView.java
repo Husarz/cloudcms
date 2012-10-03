@@ -117,6 +117,12 @@ class MainView extends Composite implements Main{
 	}
 
 	@Override
+	public MenuEntry getMenuEntry() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public UserEntry getUserEntry() {
 		if (user == null){
 			user = new UserPanel();
@@ -184,6 +190,4 @@ class MainView extends Composite implements Main{
 		}
 		return textPanel;
 	}
-
-
 }

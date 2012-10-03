@@ -13,6 +13,10 @@ import com.googlecode.objectify.Key;
 @RemoteServiceRelativePath("manage")
 public interface AdminServices extends RemoteService{
 	
+	<T> T getEntity(Key<T> key);
+	<T> Map<Key<T>, T> getMapEntities(Iterable<Key<T>> keys);
+	<T> List<T> queryEntities(Class<T> clazz);
+	
 	boolean isAdmin();
 	MyUser getMyUser(String email);
 	List<MyUser> getMyUsers();

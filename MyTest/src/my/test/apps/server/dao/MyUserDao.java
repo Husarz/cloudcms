@@ -38,9 +38,10 @@ public class MyUserDao extends ObjectifyGenericDao<MyUser> {
 		if (user == null) {
 			user = new MyUser(email);
 			
-				setService(user);
+			setService(user);
+			Key<MyUser> key = put(user);
 		
-			return put(user);
+			return key;
 		}
 		return null;
 	}
