@@ -11,11 +11,12 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.googlecode.objectify.Key;
 
 @RemoteServiceRelativePath("manage")
+//@RemoteServiceRelativePath("dataservice")
 public interface AdminServices extends RemoteService{
 	
-	<T> T getEntity(Key<T> key);
-	<T> Map<Key<T>, T> getMapEntities(Iterable<Key<T>> keys);
-	<T> List<T> queryEntities(Class<T> clazz);
+//	<T> T getEntity(Key<T> key);
+//	<T> Map<Key<T>, T> getMapEntities(Iterable<Key<T>> keys);
+	<T> List<T> queryEntities(String clazz);
 	
 	boolean isAdmin();
 	MyUser getMyUser(String email);

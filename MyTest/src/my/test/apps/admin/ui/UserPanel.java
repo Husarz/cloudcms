@@ -5,16 +5,13 @@ import java.util.List;
 import my.test.apps.admin.bundle.Resources;
 
 import my.test.apps.admin.Main;
-import my.test.apps.admin.datacell.AlbumDataProvider;
 import my.test.apps.admin.datacell.FactoryDataProvider;
+import my.test.apps.admin.datacell.QueryDataProvider;
 import my.test.apps.admin.datacell.UserDataProvider;
 import my.test.apps.shared.model.*;
 
 import com.google.gwt.cell.client.CheckboxCell;
-import com.google.gwt.cell.client.EditTextCell;
-import com.google.gwt.cell.client.TextInputCell;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -48,6 +45,7 @@ public class UserPanel extends Composite implements Main.UserEntry {
 	@UiField TextBox text;
 	
 	final Main mainCtl = Main.INST;
+	QueryDataProvider<MyUser> ud;
 	UserDataProvider userdata;
 	final MultiSelectionModel<MyUser> selection;
 	
@@ -56,7 +54,9 @@ public class UserPanel extends Composite implements Main.UserEntry {
 		pager1 = new SimplePager();
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		userdata = FactoryDataProvider.getUserDataProvider(cellTable);
+//		userdata = FactoryDataProvider.getUserDataProvider(cellTable);
+//		ud = FactoryDataProvider.getQueryDataProvider(cellTable, MyUser.class);
+		ud = FactoryDataProvider.getQueryDataProvider1(cellTable, MyUser.class);
 		
 		ProvidesKey<MyUser> key = new ProvidesKey<MyUser>() {
 
@@ -69,12 +69,14 @@ public class UserPanel extends Composite implements Main.UserEntry {
 		selection = new MultiSelectionModel<MyUser>(key);
 		initCellTable();
 		
-		userdata.addDataDisplay(cellTable);
+//		userdata.addDataDisplay(cellTable);
+		ud.addDataDisplay(cellTable);
 		
 		pager1.setDisplay(cellTable);
 		pager1.setPageSize(10);
 		
-		userdata.onRangeChanged(cellTable);
+//		userdata.onRangeChanged(cellTable);
+//		ud.onRangeChanged(cellTable);
 	}
 	
 	@UiHandler("ref")

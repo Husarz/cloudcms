@@ -13,7 +13,7 @@ public class AlbumDao extends ObjectifyGenericDao<Album> {
 private static final Logger LOG = Logger.getLogger(Album.class.getName());
 	
 	static{
-		ObjectifyService.register(Album.class);
+		
 	}
 	
 	public AlbumDao() {

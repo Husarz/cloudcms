@@ -9,7 +9,7 @@ import my.test.apps.shared.model.MyText;
 public class MyTextDao extends ObjectifyGenericDao<MyText> {
 
 	static{
-		ObjectifyService.register(MyText.class);
+		
 	}
 	
 	public MyTextDao() {

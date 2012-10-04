@@ -19,6 +19,8 @@ public class MyText implements Serializable{
 	Date date;
 	String owenr;
 
+	public MyText() { } 
+	
 	public Long getId() {
 		return id;
 	}

@@ -17,6 +17,8 @@ public class Photo implements Serializable{
 	String title;
 	String albumId;
 	
+	public Photo() { }
+	
 	public String getPicasaUrl() {
 		return picasaURL;
 	}

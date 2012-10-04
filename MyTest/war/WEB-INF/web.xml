@@ -37,6 +37,15 @@
 		<servlet-name>adminService</servlet-name>
 		<url-pattern>/admin/manage</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>dataService</servlet-name>
+		<servlet-class>my.test.apps.server.DataServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dataService</servlet-name>
+		<url-pattern>/admin/dataservice</url-pattern>
+	</servlet-mapping>
 	<!-- Default page to serve -->
 	<welcome-file-list>
 		<welcome-file>MyTest.html</welcome-file>

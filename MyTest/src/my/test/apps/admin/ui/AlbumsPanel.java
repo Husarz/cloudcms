@@ -4,6 +4,7 @@ import my.test.apps.admin.Main;
 import my.test.apps.admin.cellform.ReadInputCell;
 import my.test.apps.admin.datacell.AlbumDataProvider;
 import my.test.apps.admin.datacell.FactoryDataProvider;
+import my.test.apps.admin.datacell.QueryDataProvider;
 import my.test.apps.shared.model.Album;
 import my.test.apps.shared.model.MyUser;
 import my.test.apps.shared.model.Photo;
@@ -39,6 +40,7 @@ public class AlbumsPanel extends Composite implements Main.AlbumEntry{
 	@UiField Button del, show;
 	
 	final Main mainCtl = Main.INST;
+	QueryDataProvider<Album> al;
 	AlbumDataProvider albums;
 	SingleSelectionModel<Album> select;
 	
@@ -47,17 +49,19 @@ public class AlbumsPanel extends Composite implements Main.AlbumEntry{
 		pager = new SimplePager();
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		albums = FactoryDataProvider.getAlbumDataProvider(cellAlbum);
+//		albums = FactoryDataProvider.getAlbumDataProvider(cellAlbum);
+		al = FactoryDataProvider.getQueryDataProvider(cellAlbum, Album.class);
 		select = new SingleSelectionModel<Album>();
 		
 		initCellAlbum();
 		
-		albums.addDataDisplay(cellAlbum);
+//		albums.addDataDisplay(cellAlbum);
+		al.addDataDisplay(cellAlbum);
 		
 		pager.setDisplay(cellAlbum);
 		pager.setPageSize(10);
 		
-		albums.onRangeChanged(cellAlbum);
+//		al.onRangeChanged(cellAlbum);
 	}
 
 	private void initCellAlbum() {

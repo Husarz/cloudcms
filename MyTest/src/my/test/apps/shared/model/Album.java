@@ -21,6 +21,8 @@ public class Album implements Serializable{
 	private String service;
 	int numberPhotos;
 	
+	public Album() { }
+	
 	public String getAlbumId() {
 		return albumId;
 	}

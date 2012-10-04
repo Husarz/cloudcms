@@ -22,21 +22,21 @@ public class EntityDataProvider<T> extends AsyncDataProvider<T>{
 
 	@Override
 	protected void onRangeChanged(HasData<T> display) {
-		service.getEntity(key, new AsyncCallback<T>(){
-
-			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onSuccess(T result) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
+//		service.getEntity(key, new AsyncCallback<T>(){
+//
+//			@Override
+//			public void onFailure(Throwable caught) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//
+//			@Override
+//			public void onSuccess(T result) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//		});
 		
 	}
 

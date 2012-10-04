@@ -17,7 +17,7 @@ public class PhotoDao extends ObjectifyGenericDao<Photo>{
 	Picasa picasa;
 	
 	static{
-		ObjectifyService.register(Photo.class);
+		
 	}
 	
 	public PhotoDao() {

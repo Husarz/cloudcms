@@ -40,43 +40,43 @@ public class EntitiesDataProvider<T> extends AsyncDataProvider<T>{
 
 	@Override
 	protected void onRangeChanged(HasData<T> display) {
-		if(keys.size()>0 && display != null)
-		service.getMapEntities(keys, new AsyncCallback<Map<Key<T>, T>>(){
-
-			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onSuccess(Map<Key<T>, T> result) {
-				EntitiesDataProvider.this.result = result;
-//				List<T> list = new ArrayList<T>(result.values());
-//				updateRowCount(list.size(), true);
-//				updateRowData(0, list);
-			}
-		});
+//		if(keys.size()>0 && display != null)
+//		service.getMapEntities(keys, new AsyncCallback<Map<Key<T>, T>>(){
+//
+//			@Override
+//			public void onFailure(Throwable caught) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//
+//			@Override
+//			public void onSuccess(Map<Key<T>, T> result) {
+//				EntitiesDataProvider.this.result = result;
+////				List<T> list = new ArrayList<T>(result.values());
+////				updateRowCount(list.size(), true);
+////				updateRowData(0, list);
+//			}
+//		});
 	}
 	protected void getFeed() {
-		if(keys.size()>0)
-		service.getMapEntities(keys, new AsyncCallback<Map<Key<T>, T>>(){
-
-			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onSuccess(Map<Key<T>, T> result) {
-				EntitiesDataProvider.this.result = result;
-				EntitiesDataProvider.this.list.getList().addAll(result.values());
-//				List<T> list = new ArrayList<T>(result.values());
-//				updateRowCount(list.size(), true);
-//				updateRowData(0, list);
-			}
-		});
+//		if(keys.size()>0)
+//		service.getMapEntities(keys, new AsyncCallback<Map<Key<T>, T>>(){
+//
+//			@Override
+//			public void onFailure(Throwable caught) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//
+//			@Override
+//			public void onSuccess(Map<Key<T>, T> result) {
+//				EntitiesDataProvider.this.result = result;
+//				EntitiesDataProvider.this.list.getList().addAll(result.values());
+////				List<T> list = new ArrayList<T>(result.values());
+////				updateRowCount(list.size(), true);
+////				updateRowData(0, list);
+//			}
+//		});
 	}
 	
 		

@@ -13,4 +13,5 @@
 	
 	<source path="admin" />
 	<source path='shared'/>
+	<source path='model'/>
 </module>

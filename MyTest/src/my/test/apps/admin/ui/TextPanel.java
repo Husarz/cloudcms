@@ -4,9 +4,11 @@ import java.util.Date;
 
 import my.test.apps.admin.Main;
 import my.test.apps.admin.datacell.FactoryDataProvider;
+import my.test.apps.admin.datacell.QueryDataProvider;
 import my.test.apps.admin.datacell.TextDataProvider;
 import my.test.apps.shared.model.Album;
 import my.test.apps.shared.model.MyText;
+import my.test.apps.shared.model.MyUser;
 
 import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.core.client.GWT;
@@ -38,6 +40,7 @@ public class TextPanel extends Composite implements Main.TextEntry {
 	@UiField Button add;
 	
 	final Main mainCtl = Main.INST;
+	QueryDataProvider<MyText> ud;
 	TextDataProvider dataText;
 	SingleSelectionModel<MyText> select;
 	
@@ -46,7 +49,8 @@ public class TextPanel extends Composite implements Main.TextEntry {
 		pager = new SimplePager();
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		dataText = FactoryDataProvider.getTextDataProvider(cellTable);
+//		dataText = FactoryDataProvider.getTextDataProvider(cellTable);
+		ud = FactoryDataProvider.getQueryDataProvider(cellTable, MyText.class);
 		ProvidesKey<MyText> key = new ProvidesKey<MyText>(){
 
 			@Override
@@ -58,7 +62,9 @@ public class TextPanel extends Composite implements Main.TextEntry {
 		select = new SingleSelectionModel<MyText>(key);
 		initCellTable();
 		
-		dataText.addDataDisplay(cellTable);
+//		dataText.addDataDisplay(cellTable);
+		ud.addDataDisplay(cellTable);
+		
 		pager.setDisplay(cellTable);
 		pager.setPageSize(10);
 		

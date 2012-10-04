@@ -140,23 +140,51 @@ public class AdminServiceImpl extends RemoteServiceServlet implements AdminServi
 	public List<MapMenu> getAllMapMenu() {
 		return map.getAll();
 	}
+//
+//	@Override
+//	public <T> T getEntity(Key<T> key) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public <T> Map<Key<T>, T> getMapEntities(Iterable<Key<T>> keys) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public <T> T getEntity(Key<T> key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <T> Map<Key<T>, T> getMapEntities(Iterable<Key<T>> keys) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <T> List<T> queryEntities(Class<T> clazz) {
-		ObjectifyGenericDao<T> obj = new ObjectifyGenericDao<T>(clazz);
-		
+	public <T> List<T> queryEntities(String clazz) {
+		ObjectifyGenericDao<T> obj = null;
+		try {
+			obj = new ObjectifyGenericDao(Class.forName(clazz));
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		if (obj == null) 
+			return null;
 		return obj.getQuery();
 	}
+//	private <V extends ObjectifyGenericDao<?>> V getClassDao(String clazz){
+//		Class klazz;
+//		if (clazz.equals("MyText")){
+//			return (V) textDao;
+//		}
+//		if (clazz.equals("Album")){
+//			return null;
+//		}
+//		if (clazz.equals("MyUser")){
+//			return null;
+//		}
+//		if (clazz.equals("MapMenu")){
+//			return null;
+//		}
+//		if (clazz.equals("Photo")){
+//			return null;
+//		}
+//		
+//		return null;
+//	}
 }

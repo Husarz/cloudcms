@@ -24,7 +24,8 @@ public class MapMenu implements Serializable{
 	String map;
 	String descrip;
 	Key<?> objKey;
-	
+
+	public MapMenu() { }
 
 	public Long getId() {
 		return id;

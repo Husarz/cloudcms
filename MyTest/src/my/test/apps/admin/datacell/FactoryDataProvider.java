@@ -4,15 +4,14 @@ import my.test.apps.admin.rpc.*;
 import my.test.apps.shared.model.*;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.HasData;
-import com.googlecode.objectify.Key;
 
 public class FactoryDataProvider {
 	
 	private static final FactoryDataProvider Instance = new FactoryDataProvider();
 	
 	private static final AdminServicesAsync adminService = GWT.create(AdminServices.class);
+	private static final DataServiceAsync dataService = GWT.create(DataService.class);
 	private static final PicasaServiceAsync picasaService = GWT.create(PicasaService.class);
 	
 	private static UserDataProvider userData;
@@ -33,6 +32,10 @@ public class FactoryDataProvider {
 		return adminService;
 	}
 
+	public static DataServiceAsync getDataservice() {
+		return dataService;
+	}
+
 	public static PicasaServiceAsync getPicasaservice() {
 		return picasaService;
 	}
@@ -44,6 +47,15 @@ public class FactoryDataProvider {
 	public static <T> EntitiesDataProvider<T> getEntitiesDataProvider(Class<T> clazz){
 		EntitiesDataProvider<T> entityData = new EntitiesDataProvider<T>(clazz, adminService);
 		return entityData;
+	}
+	
+	public static <T> QueryDataProvider<T> getQueryDataProvider(HasData<T> display, Class<T> clazz){
+		QueryDataProvider<T> queryData = new QueryDataProvider<T>(display, dataService, clazz);
+		return queryData;
+	}
+	public static <T> QueryDataProvider<T> getQueryDataProvider1(HasData<T> display, Class<T> clazz){
+		QueryDataProvider<T> queryData = new QueryDataProvider<T>(display, adminService, clazz);
+		return queryData;
 	}
 	
 	public static UserDataProvider getUserDataProvider(HasData<MyUser> display){

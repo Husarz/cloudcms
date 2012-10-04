@@ -25,7 +25,7 @@ public class MyUserDao extends ObjectifyGenericDao<MyUser> {
 	private static final Logger LOG = Logger.getLogger(MyUser.class.getName());
 	
 	static{
-		ObjectifyService.register(MyUser.class);
+		
 	}
 	
 	public MyUserDao() {

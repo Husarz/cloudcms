@@ -13,7 +13,7 @@ import my.test.apps.shared.model.MapMenu;
 public class MapMenuDao extends ObjectifyGenericDao<MapMenu>{
 
 	static{
-		ObjectifyService.register(MapMenu.class);
+		
 	}
 	
 	MapMenu root;
