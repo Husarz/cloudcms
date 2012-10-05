@@ -6,8 +6,8 @@ import my.test.apps.admin.bundle.Resources;
 
 import my.test.apps.admin.Main;
 import my.test.apps.admin.datacell.FactoryDataProvider;
-import my.test.apps.admin.datacell.QueryDataProvider;
 import my.test.apps.admin.datacell.UserDataProvider;
+import my.test.apps.admin.datacell.exp.QueryDataProvider;
 import my.test.apps.shared.model.*;
 
 import com.google.gwt.cell.client.CheckboxCell;
@@ -22,6 +22,7 @@ import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextBox;
@@ -44,7 +45,7 @@ public class UserPanel extends Composite implements Main.UserEntry {
 	@UiField Button ref;
 	@UiField TextBox text;
 	
-	final Main mainCtl = Main.INST;
+	final Main mainCtl ;
 	QueryDataProvider<MyUser> ud;
 	UserDataProvider userdata;
 	final MultiSelectionModel<MyUser> selection;
@@ -52,11 +53,14 @@ public class UserPanel extends Composite implements Main.UserEntry {
 	public UserPanel() {
 		cellTable = new CellTable<MyUser>();
 		pager1 = new SimplePager();
+		
+		this.mainCtl = Main.INST;
 		initWidget(uiBinder.createAndBindUi(this));
 		
 //		userdata = FactoryDataProvider.getUserDataProvider(cellTable);
 //		ud = FactoryDataProvider.getQueryDataProvider(cellTable, MyUser.class);
-		ud = FactoryDataProvider.getQueryDataProvider1(cellTable, MyUser.class);
+//		ud = FactoryDataProvider.getQueryDataProvider1(cellTable, MyUser.class);
+		ud = new QueryDataProvider<MyUser>(cellTable, FactoryDataProvider.getDataservice(), MyUser.class);
 		
 		ProvidesKey<MyUser> key = new ProvidesKey<MyUser>() {
 
@@ -81,27 +85,31 @@ public class UserPanel extends Composite implements Main.UserEntry {
 	
 	@UiHandler("ref")
 	void refClick(ClickEvent e) {
-		userdata.onRangeChanged(cellTable);
+		ud.onRangeChanged(cellTable);
 	}
 
 	@UiHandler("del")
 	void delClick(ClickEvent e) {
 		if (selection.getSelectedSet().size()>0)
-			userdata.delUser(selection.getSelectedSet());
+			ud.delEntities(selection.getSelectedSet());
+//			userdata.delUser(selection.getSelectedSet());
 		selection.clear();
 	}
 	
 	@UiHandler("add")
 	void addClick(ClickEvent e) {
 		if(!text.getText().isEmpty())
-			userdata.addUser(text.getText());
+			addUser(text.getText());
 	}
 	
 	@UiHandler("show")
 	void showClick(ClickEvent e){
 		for (MyUser u:selection.getSelectedSet()){
-			if(u.getService().equalsIgnoreCase("picasa"))
-				Main.INST.getPicasaEntry().showUserAlbum(u.getEmailAddress());
+//			if(u.getService().equalsIgnoreCase("picasa"))
+			if (mainCtl!=null)
+				mainCtl.getPicasaEntry().showUserAlbum(u.getEmailAddress());
+			else 
+				Window.alert("mainCTL is null");
 		}
 		
 	}
@@ -147,15 +155,13 @@ public class UserPanel extends Composite implements Main.UserEntry {
 
 	@Override
 	public void addUser(String email) {
-		// TODO spr. email
-		userdata.addUser(email);
-		
+		MyUser user = new MyUser(email);
+		ud.addEntity(user);
 	}
 
 	@Override
-	public void delUser(String email) {
-		// TODO spr. email
-		userdata.delUser(email);
+	public void delUser(MyUser user) {
+		ud.delEntity(user);
 	}
 
 	@Override

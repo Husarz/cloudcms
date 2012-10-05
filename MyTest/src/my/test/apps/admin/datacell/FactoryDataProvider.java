@@ -1,5 +1,6 @@
 package my.test.apps.admin.datacell;
 
+import my.test.apps.admin.datacell.exp.QueryDataProvider;
 import my.test.apps.admin.rpc.*;
 import my.test.apps.shared.model.*;
 
@@ -49,14 +50,14 @@ public class FactoryDataProvider {
 		return entityData;
 	}
 	
-	public static <T> QueryDataProvider<T> getQueryDataProvider(HasData<T> display, Class<T> clazz){
-		QueryDataProvider<T> queryData = new QueryDataProvider<T>(display, dataService, clazz);
+	public static QueryDataProvider<AppEntity> getQueryDataProvider(HasData<AppEntity> display, Class<AppEntity> clazz){
+		QueryDataProvider<AppEntity> queryData = new QueryDataProvider<AppEntity>(display, dataService, clazz);
 		return queryData;
 	}
-	public static <T> QueryDataProvider<T> getQueryDataProvider1(HasData<T> display, Class<T> clazz){
-		QueryDataProvider<T> queryData = new QueryDataProvider<T>(display, adminService, clazz);
-		return queryData;
-	}
+//	public static QueryDataProvider<AppEntity> getQueryDataProvider1(HasData<AppEntity> display, Class<AppEntity> clazz){
+//		QueryDataProvider<AppEntity> queryData = new QueryDataProvider<AppEntity>(display, adminService, clazz);
+//		return queryData;
+//	}
 	
 	public static UserDataProvider getUserDataProvider(HasData<MyUser> display){
 		if (userData == null) userData = new UserDataProvider(display, adminService);

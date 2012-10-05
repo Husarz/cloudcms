@@ -14,7 +14,7 @@ import com.googlecode.objectify.Key;
  *  in the form of a tree
  */
 @Entity
-public class MapMenu implements Serializable{
+public class MapMenu implements AppEntity{
 
 	private static final long serialVersionUID = 1L;
 
@@ -60,5 +60,20 @@ public class MapMenu implements Serializable{
 	}
 	public void setObjKey(Key<?> objKey) {
 		this.objKey = objKey;
+	}
+
+	@Override
+	public String getName() {
+		return getMap() ;
+	}
+
+	@Override
+	public String getType() {
+		return "Menu";
+	}
+
+	@Override
+	public String getInfo() {
+		return getDescrip();
 	}
 }

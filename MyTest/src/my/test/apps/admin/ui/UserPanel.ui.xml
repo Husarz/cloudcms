@@ -41,7 +41,7 @@
       <tr>
       	<td>
       		<g:Button ui:field="del"> del </g:Button>
-      		<g:Button ui:field="show"> show alums </g:Button>
+      		<g:Button ui:field="show"> show albums </g:Button>
       	</td>
       	<td>
       		<g:Button ui:field="gallery"> show gallery </g:Button>

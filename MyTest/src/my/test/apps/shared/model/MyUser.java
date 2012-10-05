@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class MyUser implements Serializable {
+public class MyUser implements AppEntity {
 
 	private static final long serialVersionUID = 1L;
 
@@ -38,5 +38,20 @@ public class MyUser implements Serializable {
 	}
 	public void setService(String service) {
 		this.service = service;
+	}
+
+	@Override
+	public String getName() {
+		return getEmailAddress();
+	}
+
+	@Override
+	public String getType() {
+		return "Uzytkownik";
+	}
+
+	@Override
+	public String getInfo() {
+		return getService();
 	}
 }

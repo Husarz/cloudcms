@@ -3,6 +3,7 @@ package my.test.apps.admin.ui;
 import my.test.apps.admin.datacell.FactoryDataProvider;
 import my.test.apps.admin.datacell.MenuDataProvider;
 import my.test.apps.admin.rpc.AdminServicesAsync;
+import my.test.apps.shared.model.AppEntity;
 import my.test.apps.shared.model.MapMenu;
 import my.test.apps.shared.model.MyText;
 
@@ -63,6 +64,10 @@ public class CustomTreeModel implements TreeViewModel {
 //				}
 //				Class<T> clazz =  Class.forName(key.getKind());
 //				ListDataProvider<T> dataText = FactoryDataProvider.getEntitiesDataProvider(clazz).getListData();
+
+				//				ListDataProvider<AppEntity> dataText = 
+				
+				
 				
 //				return DefaultNodeInfo<String>();
 			}

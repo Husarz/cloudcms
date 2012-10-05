@@ -149,6 +149,7 @@ class MainView extends Composite implements Main{
 			mainPanel.add(picasa);
 			picasa.setVisible(false);
 		}
+		picasa.setVisible(true);
 		return picasa;
 	}
 

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import com.googlecode.objectify.annotation.Unindexed;
 
 @Entity
-public class MyText implements Serializable{
+public class MyText implements AppEntity{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -55,6 +55,24 @@ public class MyText implements Serializable{
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	@Override
+	public String getName() {
+		String str = getTitle();
+		if (str==null||str.isEmpty())
+			return "bez tytulu";
+		return str;
+	}
+
+	@Override
+	public String getType() {
+		return "Text";
+	}
+
+	@Override
+	public String getInfo() {
+		return getOwenr();
 	}
 
 }

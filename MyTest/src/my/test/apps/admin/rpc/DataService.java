@@ -1,6 +1,6 @@
 package my.test.apps.admin.rpc;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import my.test.apps.shared.model.*;
 
@@ -8,10 +8,12 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("dataservice")
-//@RemoteServiceRelativePath("manage")
+//@SuppressWarnings("hiding")
 public interface DataService extends RemoteService{
 	
 	boolean isAdmin();
-	
-	<T> List<T> queryEntities(String clazz);
+	ArrayList<AppEntity> queryEntities(String clazz);
+	void addEntities(ArrayList<AppEntity> list);
+	void delEntities(ArrayList<AppEntity> list);
+//	void delEntities(ArrayList<AppEntity> list);
 }
