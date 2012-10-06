@@ -2,6 +2,7 @@ package my.test.apps.admin.ui;
 
 import my.test.apps.admin.datacell.FactoryDataProvider;
 import my.test.apps.admin.datacell.MenuDataProvider;
+import my.test.apps.admin.datacell.exp.EntityDataProvider;
 import my.test.apps.admin.rpc.AdminServicesAsync;
 import my.test.apps.shared.model.AppEntity;
 import my.test.apps.shared.model.MapMenu;
@@ -40,25 +41,40 @@ public class CustomTreeModel implements TreeViewModel {
 			};
 			if (data.getList().size() == 0 ){
 				
-				Key<T> key = (Key<T>) node.getObjKey();
+				@SuppressWarnings("unchecked")
+				Key<AppEntity> key = (Key<AppEntity>) node.getObjKey();
 				if (key == null) return null;
-				if (key.getKind().equalsIgnoreCase("MyText")) {
+				
+				ListDataProvider<AppEntity> datalist = new EntityDataProvider(FactoryDataProvider.getDataservice(), key).getListData();
+				Cell<AppEntity> cellText = new AbstractCell<AppEntity>() {
 					
-					ListDataProvider<MyText> dataText = FactoryDataProvider.getEntitiesDataProvider(MyText.class).getListData();
-					
-					Cell<MyText> cellText = new AbstractCell<MyText>() {
+					@Override
+					public void render(
+							com.google.gwt.cell.client.Cell.Context context,
+							AppEntity value, SafeHtmlBuilder sb) {
+						sb.appendEscaped(value.getName());
 						
-						@Override
-						public void render(
-								com.google.gwt.cell.client.Cell.Context context,
-								MyText value, SafeHtmlBuilder sb) {
-							sb.appendEscaped(value.getTitle());
-							
-						}
-					};
-					
-					return new DefaultNodeInfo<MyText>(dataText, cellText);	
-				}
+					}
+				};
+				return new DefaultNodeInfo<AppEntity>(datalist, cellText);
+				
+//				if (key.getKind().equalsIgnoreCase("MyText")) {
+//					
+//					ListDataProvider<MyText> dataText = FactoryDataProvider.getEntitiesDataProvider(MyText.class).getListData();
+//					
+//					Cell<MyText> cellText = new AbstractCell<MyText>() {
+//						
+//						@Override
+//						public void render(
+//								com.google.gwt.cell.client.Cell.Context context,
+//								MyText value, SafeHtmlBuilder sb) {
+//							sb.appendEscaped(value.getTitle());
+//							
+//						}
+//					};
+//					
+//					return new DefaultNodeInfo<MyText>(dataText, cellText);	
+//				}
 //				if (key.getKind().equalsIgnoreCase("Album")){
 //					return new DefaultNodeInfo<Album>(data, cell);
 //				}

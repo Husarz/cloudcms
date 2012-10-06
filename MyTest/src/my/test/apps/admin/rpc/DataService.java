@@ -6,6 +6,7 @@ import my.test.apps.shared.model.*;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.googlecode.objectify.Key;
 
 @RemoteServiceRelativePath("dataservice")
 //@SuppressWarnings("hiding")
@@ -16,4 +17,6 @@ public interface DataService extends RemoteService{
 	void addEntities(ArrayList<AppEntity> list);
 	void delEntities(ArrayList<AppEntity> list);
 //	void delEntities(ArrayList<AppEntity> list);
+	
+	AppEntity getEntity(Key<AppEntity> key);
 }

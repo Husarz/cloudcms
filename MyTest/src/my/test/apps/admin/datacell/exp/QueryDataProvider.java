@@ -17,7 +17,6 @@ public class QueryDataProvider<T extends AppEntity> extends AsyncDataProvider<T>
 
 	final DataServiceAsync service;
 	final HasData<T> display;
-	final AdminServicesAsync service1;
 	final Class<T> clazz;
 
 	public QueryDataProvider(HasData<T> display,
@@ -25,7 +24,6 @@ public class QueryDataProvider<T extends AppEntity> extends AsyncDataProvider<T>
 		super();
 		this.service = dataservice;
 		this.display = display;
-		service1 = null;
 		this.clazz = clazz;
 	}
 

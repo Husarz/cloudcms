@@ -8,6 +8,7 @@ import my.test.apps.server.dao.*;
 import my.test.apps.server.dao.exp.ObiectifyDaoExp;
 import my.test.apps.shared.model.*;
 
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -34,7 +35,6 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 		try {
 			obj = new ObiectifyDaoExp(Class.forName(clazz));
 		} catch (ClassNotFoundException e) {
-			
 			e.printStackTrace();
 		}
 		if (obj == null) 
@@ -61,5 +61,24 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 		if(obj!=null){
 			obj.deleteAll(list);
 		}	
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public AppEntity getEntity(Key<AppEntity> key) {
+		ObiectifyDaoExp<AppEntity> obj = null;
+		try {
+			obj = new ObiectifyDaoExp(Class.forName(key.getKind()));
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		if (obj == null) 
+			return null;
+		try {
+			return obj.get(key);
+		} catch (EntityNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

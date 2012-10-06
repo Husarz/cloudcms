@@ -79,7 +79,7 @@ public class MenuDataProvider extends AsyncDataProvider<MapMenu> {
 		for (MapMenu entry : listMenu){
 	
 			if (entry.getParent().equals(id))
-				list.add(entry);
+				list.add(entry); 
 		}
 		if(list.size()==0)
 			return null;
