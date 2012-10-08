@@ -18,5 +18,7 @@ public interface DataService extends RemoteService{
 	void delEntities(ArrayList<AppEntity> list);
 //	void delEntities(ArrayList<AppEntity> list);
 	
+	ArrayList<AppEntity> getEntities(String clazz, String fild, String value);
+	
 	AppEntity getEntity(Key<AppEntity> key);
 }

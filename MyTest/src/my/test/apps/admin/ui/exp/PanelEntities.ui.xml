@@ -14,6 +14,15 @@
 	<g:HTMLPanel  addStyleNames='{res.getadmin.panel}'>
 	<table>
 			<tr>
+				<td>
+					<g:ListBox ui:field="listBox" >
+						<g:item>MyUser</g:item>
+						<g:item>Album</g:item>
+						<g:item>MapMenu</g:item>
+					</g:ListBox>
+				</td>
+			</tr>
+			<tr>
 				<td valign='top'>
 					<c:CellTable addStyleNames='{style.cellTable}'
 						pageSize='15' ui:field='cellTable' />

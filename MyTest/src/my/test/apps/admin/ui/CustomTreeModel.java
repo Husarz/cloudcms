@@ -27,7 +27,14 @@ public class CustomTreeModel implements TreeViewModel {
 	public <T> NodeInfo<?> getNodeInfo(T value) {
 		if (value instanceof MapMenu) {
 			MapMenu node = (MapMenu) value;
+			
+			// add empty menu this field give us posibility to create new menu
+			MapMenu empty = new MapMenu();
+			empty.setParent(node.getId());
+			empty.setMap("");
+			
 			ListDataProvider<MapMenu> data = menuData.getListData(node.getId());
+			data.getList().add(empty);
 			Cell<MapMenu> cell = new AbstractCell<MapMenu>() {
 
 				@Override

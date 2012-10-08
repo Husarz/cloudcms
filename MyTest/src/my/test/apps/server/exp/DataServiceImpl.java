@@ -81,4 +81,24 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 		}
 		return null;
 	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public ArrayList<AppEntity> getEntities(String clazz, String field,
+			String value) {
+		ObiectifyDaoExp<AppEntity> obj = null;
+		try {
+			obj = new ObiectifyDaoExp(Class.forName(clazz));
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		if (obj == null) 
+			return null;
+		
+		if (field.equals("any")&&value.equals("any")){
+			return obj.getQuery();
+		}
+		
+		return obj.listByProperty(field, value);
+	}
 }

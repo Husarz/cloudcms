@@ -27,7 +27,7 @@ public interface Main {
 	PhotoEntry getPhotoEntry();
 	TextEntry getTextEntry();
 	TextFeed getTextFeed();
-	
+	EntityEntry getEntityEntry();
 	
 	PhotoGallery getPhotoGallery();
 	

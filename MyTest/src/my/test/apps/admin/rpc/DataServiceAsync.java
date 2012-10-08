@@ -15,6 +15,10 @@ public interface DataServiceAsync {
 	void queryEntities(String clazz, AsyncCallback<ArrayList<AppEntity>> asyncCallback);
 	void addEntities(ArrayList<AppEntity> list, AsyncCallback<Void> callback);
 	void delEntities(ArrayList<AppEntity> list, AsyncCallback<Void> callback);
+	
+	void getEntities(String clazz, String fild, String value,
+			AsyncCallback<ArrayList<AppEntity>> callback);
+	
 	void getEntity(Key<AppEntity> key, AsyncCallback<AppEntity> callback);
 	
 }

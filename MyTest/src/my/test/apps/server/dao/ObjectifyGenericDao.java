@@ -31,11 +31,11 @@ public class ObjectifyGenericDao<T> extends DAOBase{
 	static final int BAD_MODIFIERS = Modifier.FINAL | Modifier.STATIC | Modifier.TRANSIENT;
 			
 	static {
-		ObjectifyService.register(MyUser.class);
-		ObjectifyService.register(Photo.class);
-		ObjectifyService.register(Album.class);
-		ObjectifyService.register(MapMenu.class);
-		ObjectifyService.register(MyText.class);
+//		ObjectifyService.register(MyUser.class);
+//		ObjectifyService.register(Photo.class);
+//		ObjectifyService.register(Album.class);
+//		ObjectifyService.register(MapMenu.class);
+//		ObjectifyService.register(MyText.class);
 	}
 	protected Class<T> clazz;
 	
