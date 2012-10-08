@@ -1,5 +1,7 @@
 package my.test.apps.admin.datacell;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import my.test.apps.admin.rpc.AdminServicesAsync;
@@ -36,21 +38,23 @@ public class QueryDataProvider<T> extends AsyncDataProvider<T>{
 	@Override
 	public void onRangeChanged(HasData<T> display) {
 		if (service != null)
-		service.queryEntities(clazz.getName(), new AsyncCallback<List<T>>() {
-
+		service.queryEntities(clazz.getName(), new AsyncCallback<ArrayList<Serializable>>() {
+			
+			@SuppressWarnings("unchecked")
+			@Override
+			public void onSuccess(ArrayList<Serializable> result) {
+				updateRowCount(result.size(), true);
+				updateRowData(0, (List<T>) result);
+				
+			}
+			
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
 				
 			}
-
-			@Override
-			public void onSuccess(List<T> result) {
-				updateRowCount(result.size(), true);
-				updateRowData(0, result);
-				
-			}
 		});
+		
 		if (service1 != null)
 			service1.queryEntities(clazz.getName(), new AsyncCallback<List<T>>() {
 

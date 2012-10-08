@@ -1,5 +1,7 @@
 package my.test.apps.admin.rpc;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import my.test.apps.shared.model.*;
@@ -13,5 +15,7 @@ public interface DataService extends RemoteService{
 	
 	boolean isAdmin();
 	
-	<T> List<T> queryEntities(String clazz);
+	ArrayList<Serializable> queryEntities(String clazz);
+	
+	void addAlbum(Album album);
 }

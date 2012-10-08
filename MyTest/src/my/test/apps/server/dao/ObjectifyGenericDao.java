@@ -17,6 +17,7 @@ import my.test.apps.shared.model.Album;
 import my.test.apps.shared.model.MapMenu;
 import my.test.apps.shared.model.MyText;
 import my.test.apps.shared.model.MyUser;
+import my.test.apps.shared.model.Photo;
 
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.googlecode.objectify.Key;
@@ -33,7 +34,13 @@ public class ObjectifyGenericDao<T> extends DAOBase{
 
 	static final int BAD_MODIFIERS = Modifier.FINAL | Modifier.STATIC | Modifier.TRANSIENT;
 			
-	static {}
+	static {
+		ObjectifyService.register(Photo.class);
+		ObjectifyService.register(MyUser.class);
+		ObjectifyService.register(Album.class);
+		ObjectifyService.register(MyText.class);
+		ObjectifyService.register(MapMenu.class);
+	}
 	protected Class<T> clazz;
 	
 	public ObjectifyGenericDao(Class<T> clazz) {

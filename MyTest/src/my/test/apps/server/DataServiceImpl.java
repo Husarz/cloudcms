@@ -1,5 +1,7 @@
 package my.test.apps.server;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import my.test.apps.admin.rpc.DataService;
@@ -32,10 +34,32 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 		return false;
 	}
 	
+//	@SuppressWarnings({ "unchecked", "rawtypes" })
+//	@Override
+//	public <T> List<T> queryEntities(String clazz) {
+//		ObjectifyGenericDao<T> obj = null;
+//		try {
+//			obj = new ObjectifyGenericDao(Class.forName(clazz));
+//		} catch (ClassNotFoundException e) {
+//			
+//			e.printStackTrace();
+//		}
+//		if (obj == null) 
+//			return null;
+//		List<T> list = obj.getQuery();
+//		return list;
+//	}
+
+	@Override
+	public void addAlbum(Album album) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public <T> List<T> queryEntities(String clazz) {
-		ObjectifyGenericDao<T> obj = null;
+	public ArrayList<Serializable> queryEntities(String clazz) {
+		ObjectifyGenericDao<?> obj = null;
 		try {
 			obj = new ObjectifyGenericDao(Class.forName(clazz));
 		} catch (ClassNotFoundException e) {
@@ -44,8 +68,8 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 		}
 		if (obj == null) 
 			return null;
-		List<T> list = obj.getQuery();
-		return list;
+//		List<T> list = obj.getQuery();
+		return (ArrayList<Serializable>) obj.getQuery();
 	}
 
 }
