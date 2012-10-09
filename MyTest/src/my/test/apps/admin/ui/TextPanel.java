@@ -4,8 +4,8 @@ import java.util.Date;
 
 import my.test.apps.admin.Main;
 import my.test.apps.admin.datacell.FactoryDataProvider;
-import my.test.apps.admin.datacell.QueryDataProvider;
 import my.test.apps.admin.datacell.TextDataProvider;
+import my.test.apps.admin.datacell.exp.QueryDataProvider;
 import my.test.apps.shared.model.Album;
 import my.test.apps.shared.model.MyText;
 import my.test.apps.shared.model.MyUser;
@@ -50,7 +50,8 @@ public class TextPanel extends Composite implements Main.TextEntry {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 //		dataText = FactoryDataProvider.getTextDataProvider(cellTable);
-		ud = FactoryDataProvider.getQueryDataProvider(cellTable, MyText.class);
+//		ud = FactoryDataProvider.getQueryDataProvider(cellTable, MyText.class);
+		ud = new QueryDataProvider<MyText>(cellTable, FactoryDataProvider.getDataservice(), MyText.class );
 		ProvidesKey<MyText> key = new ProvidesKey<MyText>(){
 
 			@Override

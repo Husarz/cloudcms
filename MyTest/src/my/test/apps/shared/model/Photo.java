@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Photo implements Serializable{
+public class Photo implements AppEntity{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -48,5 +48,20 @@ public class Photo implements Serializable{
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	@Override
+	public String getName() {
+		return getTitle();
+	}
+
+	@Override
+	public String getType() {
+		return "Zdjecia";
+	}
+
+	@Override
+	public String getInfo() {
+		return getPicasaUrl();
 	}
 }

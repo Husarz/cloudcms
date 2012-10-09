@@ -1,13 +1,12 @@
 package my.test.apps.shared.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Album implements Serializable{
+public class Album implements AppEntity{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -65,6 +64,22 @@ public class Album implements Serializable{
 	}
 	public void setNumberPhotos(int numberPhotos) {
 		this.numberPhotos = numberPhotos;
+	}
+
+	@Override
+	public String getName() {
+		return getTitle();
+	}
+
+	@Override
+	public String getType() {
+		return "Album";
+	}
+
+	@Override
+	public String getInfo() {
+		String str = "owner: " + getOwner() + "  " + "ilosc: " + getNumberPhotos();
+		return str;
 	}
 	
 }

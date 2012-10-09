@@ -1,6 +1,4 @@
-package my.test.apps.server.dao;
-
-//import java.util.Map;
+package my.test.apps.server.dao.exp;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -13,15 +11,11 @@ import java.util.Map;
 import javax.persistence.Embedded;
 import javax.persistence.Transient;
 
-<<<<<<< HEAD
 import my.test.apps.shared.model.Album;
 import my.test.apps.shared.model.MapMenu;
 import my.test.apps.shared.model.MyText;
 import my.test.apps.shared.model.MyUser;
 import my.test.apps.shared.model.Photo;
-=======
-import my.test.apps.shared.model.*;
->>>>>>> d1c34a83a8b74b66a19b5893522a41fbd028e6c7
 
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.googlecode.objectify.Key;
@@ -29,66 +23,57 @@ import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
 import com.googlecode.objectify.util.DAOBase;
 
-/**
- * @author adi
- *
- * @param <T>
- */
-public class ObjectifyGenericDao<T> extends DAOBase{
+public class ObiectifyDaoExp<AppEntity> extends DAOBase {
 
 	static final int BAD_MODIFIERS = Modifier.FINAL | Modifier.STATIC | Modifier.TRANSIENT;
-			
-	static {
-<<<<<<< HEAD
-		ObjectifyService.register(Photo.class);
-		ObjectifyService.register(MyUser.class);
-		ObjectifyService.register(Album.class);
-		ObjectifyService.register(MyText.class);
-		ObjectifyService.register(MapMenu.class);
-=======
-//		ObjectifyService.register(MyUser.class);
-//		ObjectifyService.register(Photo.class);
-//		ObjectifyService.register(Album.class);
-//		ObjectifyService.register(MapMenu.class);
-//		ObjectifyService.register(MyText.class);
->>>>>>> d1c34a83a8b74b66a19b5893522a41fbd028e6c7
-	}
-	protected Class<T> clazz;
 	
-	public ObjectifyGenericDao(Class<T> clazz) {
+	static {
+		ObjectifyService.register(MyUser.class);
+		ObjectifyService.register(Photo.class);
+		ObjectifyService.register(Album.class);
+		ObjectifyService.register(MapMenu.class);
+		ObjectifyService.register(MyText.class);
+	}
+	protected Class<AppEntity> clazz;
+	
+	public ObiectifyDaoExp(Class<AppEntity> clazz) {
 		this.clazz = clazz;
 	}
 	
-	protected Key<T> put(T entity){
+//	public <T extends AppEntity> ObiectifyDaoExp() {
+//		this.clazz = clazz;
+//	}
+	
+	protected Key<AppEntity> put(AppEntity entity){
 		return ofy().put(entity);
 	}
-	public Map<Key<T>, T> putAll(Iterable<T> entities){
+	public Map<Key<AppEntity>, AppEntity> putAll(Iterable<AppEntity> entities){
 		return ofy().put(entities);
 	}
 	
-	public void delete(T entity){
+	public void delete(AppEntity entity){
 		ofy().delete(entity);
 	}
-	public void deleteKey(Key<T> entityKey){
+	public void deleteKey(Key<AppEntity> entityKey){
 		ofy().delete(entityKey);
 	}
-	public void deleteAll(Iterable<T> entities){
+	public void deleteAll(Iterable<AppEntity> entities){
 		ofy().delete(entities);
 	}
-	public void deleteKeys(Iterable<Key<T>> keys){
+	public void deleteKeys(Iterable<Key<AppEntity>> keys){
 		ofy().delete(keys);
 	}
 	
 //	public T get(Long id) throws EntityNotFoundException{
 //		return ofy().get(this.clazz, id);
 //	}
-	public T get(Long id) throws EntityNotFoundException{
+	public AppEntity get(Long id) throws EntityNotFoundException{
 		return ofy().get(this.clazz, id);
 	}
-	public T get(Key<T> key) throws EntityNotFoundException{
+	public AppEntity get(Key<AppEntity> key) throws EntityNotFoundException{
 		return ofy().get(key);
 	}
-	public Map<Key<T>, T> getAll(Iterable<Key<T>> keys){
+	public Map<Key<AppEntity>, AppEntity> getAll(Iterable<Key<AppEntity>> keys){
 		return ofy().get(keys);
 	}
 	
@@ -101,44 +86,44 @@ public class ObjectifyGenericDao<T> extends DAOBase{
 	 * @return 				- zwraca wlasciwe encje
 	 */
 	
-	public ArrayList<T> getQuery(){
-		Query<T> q = ofy().query(clazz);
+	public ArrayList<AppEntity> getQuery(){
+		Query<AppEntity> q = ofy().query(clazz);
 		return asList(q.fetch());
 	}
 	
-	public T getByProperty(String propName, Object propValue){
-		Query<T> q = ofy().query(clazz);
+	public AppEntity getByProperty(String propName, Object propValue){
+		Query<AppEntity> q = ofy().query(clazz);
 		q.filter(propName, propValue);
 		return q.get();
 	}
-	public List<T> listByProperty(String propName, Object propValue){
-		Query<T> q = ofy().query(clazz);
+	public ArrayList<AppEntity> listByProperty(String propName, Object propValue){
+		Query<AppEntity> q = ofy().query(clazz);
 		q.filter(propName, propValue);
 		return asList(q.fetch());
 	}
-	public List<Key<T>> listKeysByProperty(String propName, Object propValue){
-		Query<T> q = ofy().query(clazz);
+	public ArrayList<Key<AppEntity>> listKeysByProperty(String propName, Object propValue){
+		Query<AppEntity> q = ofy().query(clazz);
 		q.filter(propName, propValue);
 		return asKeyList(q.fetchKeys());
 	}
-	public T getByExample(T exampleObj){
-		Query<T> queryByExample = buildQueryByExample(exampleObj);
-		Iterable<T> iterableResults = queryByExample.fetch();
-		Iterator<T> i = iterableResults.iterator();
-		T obj = i.next();
+	public AppEntity getByExample(AppEntity exampleObj){
+		Query<AppEntity> queryByExample = buildQueryByExample(exampleObj);
+		Iterable<AppEntity> iterableResults = queryByExample.fetch();
+		Iterator<AppEntity> i = iterableResults.iterator();
+		AppEntity obj = i.next();
 		if (i.hasNext())
 			throw new RuntimeException("Too many results");
 		return obj;
 	}
-	public List<T> listByExample(T exampleObj){
-		Query<T> queryByExample = buildQueryByExample(exampleObj);
+	public ArrayList<AppEntity> listByExample(AppEntity exampleObj){
+		Query<AppEntity> queryByExample = buildQueryByExample(exampleObj);
 		return asList(queryByExample.fetch());
 	}
 	
 	
 	
-	protected Query<T> buildQueryByExample(T exampleObj) {
-		Query<T> q = ofy().query(clazz);
+	protected Query<AppEntity> buildQueryByExample(AppEntity exampleObj) {
+		Query<AppEntity> q = ofy().query(clazz);
 		for (Field field : clazz.getDeclaredFields()){
 			// Ignore transient, embedded, array, and collection properties
 			if (field.isAnnotationPresent(Transient.class)
@@ -166,20 +151,19 @@ public class ObjectifyGenericDao<T> extends DAOBase{
 		return q;
 	}
 
-	protected List<Key<T>> asKeyList(Iterable<Key<T>> fetchKeys) {
-		ArrayList<Key<T>> keys = new ArrayList<Key<T>>();
-		for (Key<T> key : fetchKeys){
+	protected ArrayList<Key<AppEntity>> asKeyList(Iterable<Key<AppEntity>> fetchKeys) {
+		ArrayList<Key<AppEntity>> keys = new ArrayList<Key<AppEntity>>();
+		for (Key<AppEntity> key : fetchKeys){
 			keys.add(key);
 		}
 		return keys;
 	}
 
-	protected ArrayList<T> asList(Iterable<T> fetch) {
-		ArrayList<T> list = new ArrayList<T>();
-		for (T t : fetch){
+	protected ArrayList<AppEntity> asList(Iterable<AppEntity> fetch) {
+		ArrayList<AppEntity> list = new ArrayList<AppEntity>();
+		for (AppEntity t : fetch){
 			list.add(t);
 		}
 		return list;
 	}
-
 }

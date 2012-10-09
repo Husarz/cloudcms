@@ -28,6 +28,7 @@
 				<g:Button ui:field="photoTab" >Photo</g:Button>
 				<g:Button ui:field="textPanelTab" >Text</g:Button>
 				<g:Button ui:field="textTab" >Text Manager</g:Button>
+				<g:Button ui:field="entity" >Entity</g:Button>
 			</g:VerticalPanel>
 		</g:west>
 		<g:center> 

@@ -27,9 +27,15 @@ public interface Main {
 	PhotoEntry getPhotoEntry();
 	TextEntry getTextEntry();
 	TextFeed getTextFeed();
-	
+	EntityEntry getEntityEntry();
 	
 	PhotoGallery getPhotoGallery();
+	
+	public interface EntityEntry{
+		void addEntities(Iterable<? extends AppEntity> e);
+		void delEntities(Iterable<? extends AppEntity> e);
+		List<? extends AppEntity> getEntities();
+	}
 	
 	public interface VisiblePanel{
 		void setVisiblePanel(boolean visible);
@@ -45,7 +51,7 @@ public interface Main {
 	
 	public interface UserEntry extends VisiblePanel{
 		void addUser(String email);
-		void delUser(String email);
+		void delUser(MyUser user);
 		void showUsers();
 		List<MyUser> getUsers();
 	}

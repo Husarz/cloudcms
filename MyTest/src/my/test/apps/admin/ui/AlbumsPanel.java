@@ -4,7 +4,7 @@ import my.test.apps.admin.Main;
 import my.test.apps.admin.cellform.ReadInputCell;
 import my.test.apps.admin.datacell.AlbumDataProvider;
 import my.test.apps.admin.datacell.FactoryDataProvider;
-import my.test.apps.admin.datacell.QueryDataProvider;
+import my.test.apps.admin.datacell.exp.QueryDataProvider;
 import my.test.apps.shared.model.Album;
 import my.test.apps.shared.model.MyUser;
 import my.test.apps.shared.model.Photo;
@@ -50,7 +50,8 @@ public class AlbumsPanel extends Composite implements Main.AlbumEntry{
 		initWidget(uiBinder.createAndBindUi(this));
 		
 //		albums = FactoryDataProvider.getAlbumDataProvider(cellAlbum);
-		al = FactoryDataProvider.getQueryDataProvider(cellAlbum, Album.class);
+//		al = FactoryDataProvider.getQueryDataProvider(cellAlbum, Album.class);
+		al = new QueryDataProvider<Album>(cellAlbum, FactoryDataProvider.getDataservice(), Album.class);
 		select = new SingleSelectionModel<Album>();
 		
 		initCellAlbum();

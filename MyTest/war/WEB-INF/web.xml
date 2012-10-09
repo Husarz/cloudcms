@@ -40,7 +40,7 @@
 	
 	<servlet>
 		<servlet-name>dataService</servlet-name>
-		<servlet-class>my.test.apps.server.DataServiceImpl</servlet-class>
+		<servlet-class>my.test.apps.server.exp.DataServiceImpl</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dataService</servlet-name>
@@ -48,7 +48,7 @@
 	</servlet-mapping>
 	<!-- Default page to serve -->
 	<welcome-file-list>
-		<welcome-file>MyTest.html</welcome-file>
+		<welcome-file>admin.jsp</welcome-file>
 	</welcome-file-list>
 
   <servlet>

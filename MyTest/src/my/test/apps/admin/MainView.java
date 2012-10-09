@@ -2,6 +2,7 @@ package my.test.apps.admin;
 
 import my.test.apps.admin.bundle.Resources;
 import my.test.apps.admin.ui.*;
+import my.test.apps.admin.ui.exp.PanelEntities;
 import my.test.apps.admin.ui.gllery.*;
 import my.test.apps.admin.ui.text.TextManager;
 
@@ -42,8 +43,9 @@ class MainView extends Composite implements Main{
 	MiniGallery gallery;
 	TextPanel textPanel;
 	TextManager text;
+	PanelEntities entities;
 	@UiField HTMLPanel mainPanel;
-	@UiField Button usersTab, albumsTab, picasaTab, photoTab, textPanelTab, textTab;
+	@UiField Button usersTab, albumsTab, picasaTab, photoTab, textPanelTab, textTab, entity;
 	
 	public MainView() {
 		EVENTBUS = new SimpleEventBus();
@@ -88,6 +90,12 @@ class MainView extends Composite implements Main{
 	@UiHandler("textTab")
 	void textClick(ClickEvent e) {
 		getTextFeed();
+	}
+	
+	@UiHandler("entity")
+	void entityClick(ClickEvent e) {
+		getEntityEntry();
+		visible(entities);
 	}
 	
 	@Override
@@ -149,6 +157,7 @@ class MainView extends Composite implements Main{
 			mainPanel.add(picasa);
 			picasa.setVisible(false);
 		}
+		picasa.setVisible(true);
 		return picasa;
 	}
 
@@ -189,5 +198,15 @@ class MainView extends Composite implements Main{
 			textPanel.setVisible(false);
 		}
 		return textPanel;
+	}
+
+	@Override
+	public EntityEntry getEntityEntry() {
+		if (entities == null) {
+			entities = new PanelEntities();
+			mainPanel.add(entities);
+			entities.setVisible(false);
+		}
+		return entities;
 	}
 }
